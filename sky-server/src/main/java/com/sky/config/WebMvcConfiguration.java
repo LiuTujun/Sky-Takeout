@@ -1,6 +1,7 @@
 package com.sky.config;
 
 import com.sky.interceptor.JwtTokenAdminInterceptor;
+import io.swagger.annotations.Api;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -28,7 +29,7 @@ public class WebMvcConfiguration extends WebMvcConfigurationSupport {
     /**
      * 注册自定义拦截器
      *
-     * @param registry
+     * @param registry :
      */
     protected void addInterceptors(InterceptorRegistry registry) {
         log.info("开始注册自定义拦截器...");
@@ -39,10 +40,11 @@ public class WebMvcConfiguration extends WebMvcConfigurationSupport {
 
     /**
      * 通过knife4j生成接口文档
-     * @return
+     * @return :
      */
     @Bean
     public Docket docket() {
+        log.info("准备生成swagger文档...");
         ApiInfo apiInfo = new ApiInfoBuilder()
                 .title("苍穹外卖项目接口文档")
                 .version("2.0")
@@ -59,9 +61,10 @@ public class WebMvcConfiguration extends WebMvcConfigurationSupport {
 
     /**
      * 设置静态资源映射
-     * @param registry
+     * @param registry :
      */
     protected void addResourceHandlers(ResourceHandlerRegistry registry) {
+        log.info("开始映射静态资源...");
         registry.addResourceHandler("/doc.html").addResourceLocations("classpath:/META-INF/resources/");
         registry.addResourceHandler("/webjars/**").addResourceLocations("classpath:/META-INF/resources/webjars/");
     }
