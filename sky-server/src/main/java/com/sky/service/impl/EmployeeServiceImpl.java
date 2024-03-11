@@ -98,4 +98,11 @@ public class EmployeeServiceImpl implements EmployeeService {
         return pageResult;
     }
 
+    @Override
+    public void enableOrDisenable(Integer status, Long id) {
+        Employee emp = Employee.builder().status(status).id(id).build();
+
+        employeeMapper.update(emp);
+    }
+
 }

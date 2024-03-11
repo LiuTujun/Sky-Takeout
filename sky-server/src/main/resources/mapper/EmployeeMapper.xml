@@ -12,4 +12,31 @@
             </if>
         </where>
     </select>
+
+    <!--配置文件中配置了实体类的扫描路径 可以不写全类名-->
+    <update id="update" parameterType="Employee">
+        update employee
+        <set>
+            <if test="name != null and name != ''" >
+                name = #{name},
+            </if>
+            <if test="username != null and username != ''" >
+                username = #{username},
+            </if>
+            <if test="phone != null and phone != ''" >
+                phone = #{phone},
+            </if>
+            <if test="sex != null and sex != ''" >
+                sex = #{sex},
+            </if>
+            <if test="idNumber != null and idNumber != ''" >
+                idNumber = #{idNumber},
+            </if>
+            <if test="status != null" >
+                status = #{status},
+            </if>
+        </set>
+        where id = #{id};
+    </update>
+
 </mapper>

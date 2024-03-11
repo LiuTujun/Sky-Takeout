@@ -1,5 +1,6 @@
 package com.sky.controller.admin;
 
+import com.alibaba.druid.sql.visitor.functions.IfNull;
 import com.sky.constant.JwtClaimsConstant;
 import com.sky.dto.EmployeeDTO;
 import com.sky.dto.EmployeeLoginDTO;
@@ -89,6 +90,14 @@ public class EmployeeController {
         log.info("分页查询员工信息, {}", employeePageQueryDTO);
         PageResult pageResult = employeeService.queryPage(employeePageQueryDTO);
         return Result.success(pageResult);
+    }
+
+    @PostMapping("/status/{status}")
+    @ApiOperation("启用或禁用员工")
+    public Result enableOrDisenable(@PathVariable Integer status, Long id){
+        log.info("启用或禁用员工, {}, {}", status, id);
+        employeeService.enableOrDisenable(status, id);
+        return Result.success();
     }
 
 }
