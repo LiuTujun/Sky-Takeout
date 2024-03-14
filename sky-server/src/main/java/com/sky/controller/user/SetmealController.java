@@ -22,13 +22,13 @@ public class SetmealController {
     private SetmealService setmealService;
 
     /**
-     * 条件查询
+     * 根据分类id查询该分类下所有套餐
      *
      * @param categoryId
      * @return
      */
     @GetMapping("/list")
-    @ApiOperation("根据分类id查询套餐")
+    @ApiOperation("根据分类id查询所有套餐")
     public Result<List<Setmeal>> list(Long categoryId) {
         Setmeal setmeal = new Setmeal();
         setmeal.setCategoryId(categoryId);

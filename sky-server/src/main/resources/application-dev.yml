@@ -16,7 +16,7 @@ sky:
     port: 6379
 #    password: 123456
     # redis 默认穿创建了16个数据库
-    database: 15
+    database: 14
   wechat:
     appid: wxea062041ea9abf21
     secret: 00912b76ba7f93eb91e7309b1c754805

@@ -39,4 +39,11 @@ public interface DishService {
      * @param id
      */
     List<Dish> getByCategoryId(String id);
+
+    /**
+     * 更改菜品信息
+     * @param id
+     * @param status
+     */
+    void switchStatus(String id, String status);
 }
