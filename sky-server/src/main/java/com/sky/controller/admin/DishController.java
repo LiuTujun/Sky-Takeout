@@ -2,6 +2,7 @@ package com.sky.controller.admin;
 
 import com.sky.dto.DishDTO;
 import com.sky.dto.DishPageQueryDTO;
+import com.sky.entity.Dish;
 import com.sky.result.PageResult;
 import com.sky.result.Result;
 import com.sky.service.DishService;
@@ -17,8 +18,6 @@ import java.util.List;
 /**
  * 菜品管理
  */
-
-
 @Api(tags = "菜品表单")
 @Slf4j
 @RestController
@@ -62,6 +61,15 @@ public class DishController {
 
         DishVO dishVO = dishService.getById(id);
         return Result.success(dishVO);
+    }
+
+    @GetMapping("/list")
+    @ApiOperation("根据分类ID获取菜品信息")
+    public Result<List<Dish>> getByCategoryId(String categoryId){
+        log.info("根据分类ID获取菜品信息， {}", categoryId);
+
+        List<Dish> dishes = dishService.getByCategoryId(categoryId);
+        return Result.success(dishes);
     }
 
     @PutMapping

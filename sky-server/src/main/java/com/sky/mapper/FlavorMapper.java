@@ -31,12 +31,17 @@ public interface FlavorMapper {
      */
     void deleteByDishIds(List<Long> ids);
 
+    /**
+     * 根据菜品ID查询对应口味
+     * @param dishId
+     * @return
+     */
     @Select("select * from dish_flavor where dish_id=#{dishId}")
     List<DishFlavor> getById(Long dishId);
 
-    /**
-     * 修改口味信息
-     * @param dishDTO
-     */
-    void update(DishDTO dishDTO);
+    ///**
+    // * 修改口味信息
+    // * @param dishDTO
+    // */
+    //void update(DishDTO dishDTO);
 }

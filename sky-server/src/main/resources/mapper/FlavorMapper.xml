@@ -10,6 +10,7 @@
           (#{df.dishId}, #{df.name}, #{df.value})
         </foreach>
     </insert>
+    <!--<update id="update"></update>-->
 
     <delete id="deleteByDishIds">
         delete from setmeal_dish where dish_id in
