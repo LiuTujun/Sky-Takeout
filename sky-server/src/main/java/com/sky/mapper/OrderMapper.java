@@ -100,14 +100,14 @@ public interface OrderMapper {
      * @param map
      * @return
      */
-    Double SumByMap(Map map);
+    Double sumByMap(Map map);
 
     /**
      * 查询指定日期区间的订单数/有效订单数
      * @param map
      * @return
      */
-    Integer countMap(Map map);
+    Integer countByMap(Map map);
 
     /**
      * 统计指定时间区间内的Top10 商品

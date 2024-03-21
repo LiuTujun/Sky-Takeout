@@ -1,6 +1,5 @@
 package com.sky.service.impl;
 
-import com.github.pagehelper.util.StringUtil;
 import com.sky.dto.GoodsSalesDTO;
 import com.sky.entity.Orders;
 import com.sky.mapper.OrderMapper;
@@ -67,7 +66,7 @@ public class ReportServiceImpl implements ReportService {
             map.put("begin", beginTime);
             map.put("end", endTime);
             map.put("status", Orders.COMPLETED);
-            Double turnover = orderMapper.SumByMap(map);
+            Double turnover = orderMapper.sumByMap(map);
             //当日若没有营业额则赋值为0
             turnover = turnover == null ? 0.0 : turnover;
             turnoverList.add(turnover);
@@ -157,10 +156,10 @@ public class ReportServiceImpl implements ReportService {
             map.put("end", endTime);
             map.put("begin", beginTime);
             // 订单总数量
-            Integer totalNum = orderMapper.countMap(map);
+            Integer totalNum = orderMapper.countByMap(map);
             map.put("status", Orders.COMPLETED);
             // 有效订单数量
-            Integer validNum = orderMapper.countMap(map);
+            Integer validNum = orderMapper.countByMap(map);
 
             totalNumList.add(totalNum);
             validNumList.add(validNum);

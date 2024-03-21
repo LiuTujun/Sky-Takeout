@@ -58,7 +58,7 @@
         </where>
     </select>
 
-    <select id="SumByMap" resultType="java.lang.Double" parameterType="java.util.Map">
+    <select id="sumByMap" resultType="java.lang.Double" parameterType="java.util.Map">
         select sum(amount) from orders
         <where>
             <if test="begin != null">order_time &gt; #{begin}</if>
@@ -67,7 +67,7 @@
         </where>
     </select>
 
-    <select id="countMap" resultType="java.lang.Integer">
+    <select id="countByMap" resultType="java.lang.Integer">
         select count(id) from orders
         <where>
             <if test="begin != null">order_time &gt; #{begin}</if>
