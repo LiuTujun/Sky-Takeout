@@ -46,5 +46,44 @@
         </set>
         where id = #{id}
     </update>
-    
+
+    <select id="list" resultType="com.sky.entity.Orders" parameterType="com.sky.dto.OrdersPageQueryDTO">
+        select * from orders
+        <where>
+            <if test="number != null and number != ''">number=#{number}</if>
+            <if test="status != null">and status=#{status}</if>
+            <if test="phone != null and phone != ''">and phone like concat('%', #{phone}, '%')</if>
+            <if test="endTime != null"><![CDATA[ and #{endTime} > order_time]]></if>
+            <if test="beginTime != null"><![CDATA[ and #{beginTime} < order_time]]></if>
+        </where>
+    </select>
+
+    <select id="SumByMap" resultType="java.lang.Double" parameterType="java.util.Map">
+        select sum(amount) from orders
+        <where>
+            <if test="begin != null">order_time &gt; #{begin}</if>
+            <if test="end != null"> and order_time &lt; #{end}</if>
+            <if test="status != null">and status=#{status}</if>
+        </where>
+    </select>
+
+    <select id="countMap" resultType="java.lang.Integer">
+        select count(id) from orders
+        <where>
+            <if test="begin != null">order_time &gt; #{begin}</if>
+            <if test="end != null"> and order_time &lt; #{end}</if>
+            <if test="status != null">and status=#{status}</if>
+        </where>
+    </select>
+
+    <select id="getSalesTop10" resultType="com.sky.dto.GoodsSalesDTO">
+        select od.name, sum(od.number) sum_number from order_detail od, orders o
+        where o.status = 5 and od.order_id = o.id
+        <if test="begin != null">and order_time &gt; #{begin}</if>
+        <if test="end != null"> and order_time &lt; #{end}</if>
+        group by od.name
+        order by sum_number desc
+        limit 0, 10
+    </select>
+
 </mapper>

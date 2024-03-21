@@ -16,5 +16,5 @@ public class GoodsSalesDTO implements Serializable {
     private String name;
 
     //销量
-    private Integer number;
+    private Integer sumNumber;
 }
